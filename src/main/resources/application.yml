@@ -1,1 +1,21 @@
+logging.level:
+    org.hibernate.SQL: info
 
+server:
+  port: 8080
+  servlet:
+    encoding:
+      force-response: true
+
+spring:
+  devtools:
+    livereload:
+      enabled: true
+  profiles:
+    include:
+      - aws
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database: mysql
+    hibernate.ddl-auto: update

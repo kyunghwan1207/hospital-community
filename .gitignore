@@ -21,6 +21,7 @@ bin/
 .idea
 .gradle
 gradle
+src/main/resources/application-aws.yml
 *.iws
 *.iml
 *.ipr

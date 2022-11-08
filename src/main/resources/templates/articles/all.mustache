@@ -1,0 +1,23 @@
+{{>layouts/header}}
+<table class="table">
+    <h2>전체 Article 목록</h2>
+    <theade>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Content</th>
+        </tr>
+    </theade>
+    <tbody class="table-group-divider">
+        {{#articles}}
+            <tr>
+                <td><a href="/articles/{{id}}" style="text-decoration: none; color: black;"><div>
+                    id: {{id}}</td>
+                <td>title: {{title}}</td>
+                <td>content: {{content}}</td>
+                </a>
+            </tr>
+        {{/articles}}
+    </tbody>
+</table>
+{{>layouts/footer}}
