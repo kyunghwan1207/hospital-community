@@ -1,0 +1,28 @@
+{{>layouts/header}}
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">병원명</th>
+        <th scope="col">병원 주소</th>
+    </tr>
+    </thead>
+
+    <tbody class = "table-group-divisor">
+    {{#hospitals}}
+        <tr>
+            <th>{{id}}</th>
+            <td>
+                {{#hospitalName}}{{hospitalName}}{{/hospitalName}}
+                {{^hospitalName}} - {{/hospitalName}}
+            </td>
+
+            <td>
+                {{#roadNameAddress}}{{roadNameAddress}}{{/roadNameAddress}}
+                {{^roadNameAddress}} - {{/roadNameAddress}}
+            </td>
+        </tr>
+    {{/hospitals}}
+    </tbody>
+</table>
+{{>layouts/footer}}

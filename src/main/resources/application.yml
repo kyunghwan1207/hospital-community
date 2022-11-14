@@ -19,3 +19,4 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     database: mysql
     hibernate.ddl-auto: update
+    open-in-view: false

@@ -1,14 +1,14 @@
 {{>layouts/header}}
-<div>상세보기 페이지입니다.</div> <br/>
-<div class="card" style="width: 18rem;">
-    {{#article}}
-        <div class="card-body"></div>
-        <h5 class="card-title">id: {{id}}</h5>
-        <h6 class="card-subtitle mb-2">title: {{title}} </h6>
-        <p class="card-text">content: {{content}}</p>
-    {{/article}}
-    <br/>
-    <a href="/articles/new">새글 작성</a>
-    <a href="/articles">목록</a>
-</div>
+{{#article}}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{id}}</h6>
+            <p class="card-text">{{content}}</p>
+        </div>
+    </div>
+    <a href="/articles" class="card-link">목록</a>
+    <a href="/articles/{{id}}/update" class="btn btn-danger">수정</a>
+    <a href="/articles/{{id}}/delete" class="btn btn-danger">삭제</a>
+{{/article}}
 {{>layouts/footer}}
