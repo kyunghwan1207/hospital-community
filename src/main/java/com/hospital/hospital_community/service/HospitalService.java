@@ -2,8 +2,9 @@ package com.hospital.hospital_community.service;
 
 import com.hospital.hospital_community.domain.entity.Hospital;
 import com.hospital.hospital_community.repository.HospitalRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,8 +16,8 @@ public class HospitalService {
         this.hospitalRepository = hospitalRepository;
     }
 
-    public List<Hospital> findAll(){
-        List<Hospital> hospitalList = hospitalRepository.findAll();
+    public Page<Hospital> findAll(Pageable pageable){
+        Page<Hospital> hospitalList = hospitalRepository.findAll(pageable);
         return hospitalList;
     }
 }
