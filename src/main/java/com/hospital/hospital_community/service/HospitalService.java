@@ -16,8 +16,13 @@ public class HospitalService {
         this.hospitalRepository = hospitalRepository;
     }
 
-    public Page<Hospital> findAll(Pageable pageable){
-        Page<Hospital> hospitalList = hospitalRepository.findAll(pageable);
-        return hospitalList;
+    public Page<Hospital> findWithPage(Pageable pageable){
+        Page<Hospital> hospitals = hospitalRepository.findAll(pageable);
+        return hospitals;
+    }
+
+    public List<Hospital> findAll() {
+        List<Hospital> hospitals = hospitalRepository.findAll();
+        return hospitals;
     }
 }

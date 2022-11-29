@@ -1,6 +1,5 @@
 package com.hospital.hospital_community.domain.dto;
 
-import com.hospital.hospital_community.domain.entity.Hospital;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class HospitalDTO {
+public class HospitalDto {
     private Long id;
 
     private String managementNumber;
@@ -24,7 +23,7 @@ public class HospitalDTO {
     private int totalNumberOfBeds;  // 변경가능
     private float totalAreaSize;  // 변경가능
 
-    public HospitalDTO(int businessStatus, int healthcareProviderCount, int patientRoomCount, int totalNumberOfBeds) {
+    public HospitalDto(int businessStatus, int healthcareProviderCount, int patientRoomCount, int totalNumberOfBeds) {
         this.businessStatus = businessStatus;
         this.healthcareProviderCount = healthcareProviderCount;
         this.patientRoomCount = patientRoomCount;

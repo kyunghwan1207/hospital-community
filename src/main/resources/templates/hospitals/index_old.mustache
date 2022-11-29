@@ -25,14 +25,5 @@
     {{/hospitals}}
     </tbody>
 </table>
-<div class="pagination justify-content-center">
-    <a href="?page={{first}}" style="padding: 10px">처음</a>
-    <a href="?page={{previous}}" role="button" class="btn btn-dark" style="padding-bottom: 0px;">이전</a>
-    {{#numList}}
-        <a href="?page={{num}}" style="padding: 15px;" >{{num}}</a>
-    {{/numList}}
-    <a href="?page={{next}}" role="button" class="btn btn-dark">다음</a>
-    <a href="?page={{last}}" style="padding: 10px">마지막</a>
-</div>
 
 {{>layouts/footer}}
