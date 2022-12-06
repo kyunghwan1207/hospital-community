@@ -1,5 +1,6 @@
 package com.hospital.hospital_community.domain.entity;
 
+import com.hospital.hospital_community.domain.Role;
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,4 +18,6 @@ public class User {
     private String password;
     @Column(unique = true)
     private String email;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 }

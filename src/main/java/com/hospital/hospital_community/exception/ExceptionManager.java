@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ExceptionManager {
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<?> runtimeExceptionHandler(RuntimeException exception){
+        System.out.println("===ExceptionManager.runtimeExceptionHandler===");
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(Response.error(exception.getMessage()));
     }
     @ExceptionHandler(HospitalReviewAppException.class)
     public ResponseEntity<?> hospitalReviewExceptionHandler(HospitalReviewAppException exception){
+        System.out.println("===ExceptionManager.hospitalReviewExceptionHandler===");
         return ResponseEntity.status(exception.getErrorCode().getStatus())
-                .body(exception.getErrorCode().getMessage());
+                .body(exception.getMessage());
     }
 }
