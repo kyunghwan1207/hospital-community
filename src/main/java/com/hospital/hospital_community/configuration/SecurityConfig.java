@@ -30,8 +30,8 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // jwt사용하는 경우 씀
                 .and()
                 .authorizeRequests()
-//                .antMatchers("/api/v1/users/join", "/api/v1/users/login", "/api/v1/chat/**").permitAll() // join, login은 언제나 가능
-                .antMatchers("/api/**").permitAll()
+                .antMatchers("/api/v1/users/join", "/api/v1/users/login", "/api/v1/chat/**").permitAll() // join, login은 언제나 가능
+//                .antMatchers("/api/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/v1/**").authenticated() // "/api/v1/**"으로 들어오는 POST요청은 인증이필요하다
                 .and()
                 .addFilterBefore(new JwtTokenFilter(userService, secretKey), UsernamePasswordAuthenticationFilter.class) //UserNamePasswordAuthenticationFilter적용하기 전에 JWTTokenFilter를 적용 하라는 뜻 입니다.

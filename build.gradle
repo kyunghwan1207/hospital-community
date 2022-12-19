@@ -36,6 +36,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	implementation "org.springframework.boot:spring-boot-devtools"
+	implementation group: 'org.thymeleaf', name: 'thymeleaf', version: '2.1.6.RELEASE'
 
 }
 

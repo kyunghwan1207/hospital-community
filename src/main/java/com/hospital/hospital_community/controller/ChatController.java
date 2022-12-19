@@ -5,6 +5,7 @@ import com.hospital.hospital_community.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.bridge.Message;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 @RequestMapping("/api/v1/chat")
-@RestController
+@Controller
 @Slf4j
 @RequiredArgsConstructor
 public class ChatController {
@@ -25,6 +26,11 @@ public class ChatController {
     public record WriteMessageRequest(String authorName, String content){
 
     }
+    @GetMapping("/room")
+    public String showRoom(){
+        return "chat/room";
+    }
+
     @PostMapping("/write-message")
     public RsData<WriteMessageResponse> writeMessage(@RequestBody WriteMessageRequest dto){
         ChatMessage message = new ChatMessage(dto.authorName(), dto.content());
