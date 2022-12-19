@@ -21,4 +21,7 @@ public class Hospital {
 
     @OneToMany(mappedBy = "hospital")
     private List<Review> reviews = new ArrayList<>();
+
+    @OneToMany(mappedBy = "hospital")
+    private List<Visit> visitList;
 }

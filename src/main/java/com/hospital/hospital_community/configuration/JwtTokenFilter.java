@@ -34,7 +34,6 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         log.info("authorizatonHeader: {}", authorizationHeader);
 
         if(authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")){
-            log.error("토큰이 없거나 형식이 맞지 않습니다");
             filterChain.doFilter(request, response);
             return;
         }

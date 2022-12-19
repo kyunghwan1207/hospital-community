@@ -4,6 +4,7 @@ import com.hospital.hospital_community.domain.Role;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -20,4 +21,7 @@ public class User {
     private String email;
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Visit> visit;
 }

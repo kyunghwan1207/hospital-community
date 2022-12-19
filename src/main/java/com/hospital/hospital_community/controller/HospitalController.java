@@ -30,6 +30,11 @@ public class HospitalController {
     private final HospitalService hospitalService;
     private final ReviewService reviewService;
 
+    @GetMapping
+    public ResponseEntity showHospitalList(){
+        List<Hospital> hospitals = hospitalService.findAll();
+        return ResponseEntity.ok().body(hospitals);
+    }
 //    @GetMapping("")
 //    public String index(Model model,
 //                        @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.ASC)
@@ -88,5 +93,6 @@ public class HospitalController {
         ReviewCreateResponse responseDto = reviewService.createReview(hospitalId, requestDto);
         return ResponseEntity.ok().body(responseDto);
     }
+
 
 }
