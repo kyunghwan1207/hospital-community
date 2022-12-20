@@ -1,23 +1,25 @@
 package com.hospital.hospital_community.controller;
 
+import com.hospital.hospital_community.domain.SseEmitters;
 import com.hospital.hospital_community.domain.entity.ChatMessage;
 import com.hospital.hospital_community.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.bridge.Message;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 @RequestMapping("/api/v1/chat")
-@Controller
+@RestController
 @Slf4j
 @RequiredArgsConstructor
 public class ChatController {
-    private List<ChatMessage> chatMessageList = new ArrayList<>();
+    private final SseEmitters sseEmitters;
     private final ChatService chatService;
 
     public record WriteMessageResponse(Long id){
@@ -34,8 +36,12 @@ public class ChatController {
     @PostMapping("/write-message")
     public RsData<WriteMessageResponse> writeMessage(@RequestBody WriteMessageRequest dto){
         ChatMessage message = new ChatMessage(dto.authorName(), dto.content());
-//        chatMessageList.add(message);
-        chatService.save(message);
+        Long savedId = chatService.save(message);
+
+        // SSE연결을 통해 생성되어 리스트로 emitter들에게 방생한 eventName을 알려준다(noti)
+        sseEmitters.noti("chat__messageAdded");
+
+        log.info("saved message id = " + savedId);
         return new RsData(
                 "S-1",
                 "success write message",
@@ -51,8 +57,6 @@ public class ChatController {
 
     @GetMapping("/messages") // ?fromId={fromId}
     public RsData<MessageResponse> messages(MessageRequest dto){
-//        List<ChatMessage> responseChatMessageList = chatMessageList;
-        List<ChatMessage> chatMessages = chatService.findAll();
         List<ChatMessage> responseChatMessageList = chatService.findAll();
 
         // 번호가 입력되었다면
